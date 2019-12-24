@@ -1,0 +1,73 @@
+<div class="card mt-3">
+  <div class="card-header">
+    <div class="float-left">
+      <h4>Produtos</h4>
+    </div>
+    <div class="float-right">
+      <button type="button" class="btn btn-primary" [routerLink]="['novo']">Novo Produto</button>
+      {{ ' ' }}
+      <button type="button" class="btn btn-secondary" (click)="atualizar()">Atualizar</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table table-hover" *ngIf="produtos$ | async as produtos; else loading">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nome</th>
+          <th>Quantidade</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produto of produtos">
+          <td>{{ produto.id }}</td>
+          <td>{{ produto.nome }}</td>
+          <td>{{ produto.quantidade }}</td>
+          <td>{{ produto.valor }}</td>
+          <td>
+            <span class="float-right">
+              <button class="btn btn-outline-warning mb-1 btn-sm" (click)="editar(produto.id)">
+                Atualizar
+              </button>
+              {{ ' ' }}
+              <button class="btn btn-outline-danger mb-1 btn-sm" (click)="desativar(produto.id)">
+                Remover
+              </button>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #loading>
+      <span>Carregando Produtos...</span>
+    </ng-template>
+
+    <!-- <ng-template #loadingError>
+      <div *ngIf="error$ | async; else loading">
+        Erro ao carregar produtos. Tente novamente mais tarde.
+      </div>
+      <ng-template #loading>
+        <span>Carregando Produtos...</span>
+      </ng-template>
+    </ng-template> -->
+
+    <!--ng-template #loadingError>
+        <div *ngIf="error$ | async; else loading" >
+          Erro ao carregar cursos. Tente novamente mais tarde.
+        </div>
+        <ng-template #loading>
+            <span>Carregando Cursos...</span>
+        </ng-template>
+      </ng-template -->
+  </div>
+</div>
+
+<ng-template #deleteModal>
+  <div class="modal-body text-center">
+    <p>Tem certeza que deseja remover esse curso?</p>
+    <button type="button" class="btn btn-default" (click)="onConfirmDelete()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="onDeclineDelete()">Nao</button>
+  </div>
+</ng-template>

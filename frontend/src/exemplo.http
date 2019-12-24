@@ -1,0 +1,30 @@
+####
+GET http://localhost:8080/cew/produtos
+
+####
+GET http://localhost:8080/cew/produtos/25
+
+#####
+POST http://localhost:8080/cew/produtos
+Content-Type: application/json
+
+{
+        "nome": "Item 89",
+        "quantidade": 89,
+        "valor": 89.89,
+        "ativo": true
+}
+
+#####
+PUT http://localhost:8080/cew/produtos/23
+Content-Type: application/json
+
+{
+        "nome": "Item 89 UPDATE",
+        "quantidade": 89,
+        "valor": 89.89,
+        "ativo": true
+}
+
+#####
+DELETE http://localhost:8080/cew/produtos/25
