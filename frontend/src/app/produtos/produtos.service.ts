@@ -34,4 +34,8 @@ export class ProdutosService {
     return this.http.get(`${this.API}/${idProduto}`).pipe(take(1));
   }
 
+  remover(idProduto) {
+    return this.http.delete(`${this.API}/${idProduto}`).pipe(take(1));
+  }
+
 }

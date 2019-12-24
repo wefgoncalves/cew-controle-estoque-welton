@@ -48,8 +48,8 @@ export class ProdutosListaComponent implements OnInit {
     this.router.navigate(['produtos/editar', idProduto]);
   }
 
-  desativar() {
-
+  remover(idProduto) {
+    this.service.remover(idProduto).subscribe(_ => {});
   }
 
 }
